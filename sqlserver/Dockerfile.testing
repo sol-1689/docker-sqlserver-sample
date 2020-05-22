@@ -1,0 +1,18 @@
+FROM microsoft/mssql-server-linux:2017-latest
+
+COPY ./start-up.sh /usr/src
+COPY ./entrypoint.sh /usr/src
+COPY ./wait-for-it.sh /usr/src
+COPY ./init-data/ /init-data/
+
+ENV TZ="Asia/Tokyo"
+ENV ACCEPT_EULA="Y"
+ENV MSSQL_SA_PASSWORD="Jko3va-D9821jhsvGD"
+ENV MSSQL_COLLATION="JAPANESE_CI_AS"
+
+RUN chmod +x /usr/src/start-up.sh && chmod +x /usr/src/entrypoint.sh && chmod +x /usr/src/wait-for-it.sh
+
+# CMD ["/bin/bash", "-c", "/opt/mssql/bin/sqlservr & /usr/src/start-up.sh & /opt/mssql/bin/sqlservr"]
+# CMD /bin/bash /usr/src/entrypoint.sh
+
+CMD ["/bin/bash", "-c", "/usr/src/entrypoint.sh"]
