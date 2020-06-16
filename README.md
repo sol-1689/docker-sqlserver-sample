@@ -1,6 +1,6 @@
 # 起動方法
-「start.bat」を実行。
-「stop.bat」の実行で停止。
+「start.bat」を実行。  
+「stop.bat」の実行で停止。  
 
 
 # ファイル説明
